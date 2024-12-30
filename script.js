@@ -10,18 +10,18 @@ const collectEmployees = function () {
     const firstName = prompt("Enter employee's first name:");
     const lastName = prompt("Enter employee's last name:");
     let salary = prompt("Enter employee's salary:");
-    while (isNaN(salary)) { // checks if input is a number
+    while (isNaN(salary)) { // checks if input is not a number
       salary = prompt("Invalid input. Please enter a valid salary:");
     }
     const employee = { // employee object to hold their info
       firstName: firstName,
       lastName: lastName,
-      salary: Number(salary)
+      salary: parseFloat(salary)
     };
     employees.push(employee);
-    console.log(`Employee: ${employee.firstName} ${employee.lastName}`);
+    // console.log(`Employee: ${employee.firstName} ${employee.lastName}`);
     // add employee to array and post roster
-    console.log(`Employees: ${JSON.stringify(employees)}`);
+    // console.log(`Employees: ${JSON.stringify(employees)}`);
     addEmployee = confirm("Do you want to add another employee?");
   }
   return employees;
@@ -29,14 +29,14 @@ const collectEmployees = function () {
 
 // Display the average salary
 const displayAverageSalary = function (employees) {
-  console.log('employees:', employees)
+  // console.log('employees:', employees)
   // TODO: Calculate and display the average salary
   let totalSalary = 0;
   for (let i = 0; i < employees.length; i++) {
     totalSalary += parseFloat(employees[i].salary);
   }
   const averageSalary = totalSalary / employees.length;
-  console.log(`The average employee salary between our ${employees.length} employee(s) is $${averageSalary.toFixed(2)}.`);
+  console.log(`The average employee salary between our ${employees.length} employee(s) is $${averageSalary.toFixed(2)}`);
   return averageSalary;
 };
 
